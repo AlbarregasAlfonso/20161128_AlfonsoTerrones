@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root   xmlns:jsp="http://java.sun.com/JSP/Page"
+            xmlns:c="http://java.sun.com/jsp/jstl/core"
+            version="2.1">
+    <jsp:directive.page contentType="text/html; charset=UTF-8" />
+    <jsp:directive.page isELIgnored="false" />
+    <jsp:output omit-xml-declaration="false"
+                doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd" />
+
+    <jsp:element name="text">
+        <jsp:attribute name="lang">EN</jsp:attribute>
+         <head>
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estilo.css"/>   
+        </head>
+        <jsp:body> 
+            <form method="post" action="${Path}/EditarDatosG">
+            
+                <h1>Vamos a Editar a el Equipo <c:out value="${opcion2}"/></h1>
+                
+                <c:forEach items="${grupos}" var="grupo">
+                 
+                   <c:if  test="${opcion2==grupo.idEquipo}" >
+                       <table>
+                           <tr>
+                               <td><label>Marca</label></td>
+                               <td><label>NumSerie</label></td>
+                              
+                           </tr>
+                           <tr>
+                               <td><input type="text" name="marca" value="${grupo.marca}"/></td>
+                               <td><input type="text" name="numserie" value="${grupo.numSerie}"/></td>
+                               
+                           </tr>                           
+                       </table>
+                               <input type="hidden" name="idEquipo" value="${grupo.idEquipo}"/>
+                    </c:if>
+                </c:forEach>
+                
+                
+                <input type="submit" value="Enviar"/>
+
+            </form>
+        </jsp:body>
+    </jsp:element>
+</jsp:root>

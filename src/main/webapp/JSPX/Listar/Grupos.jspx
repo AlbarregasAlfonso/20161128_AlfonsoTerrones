@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jsp:root   xmlns:jsp="http://java.sun.com/JSP/Page"
+            xmlns:c="http://java.sun.com/jsp/jstl/core"
+            version="2.1">
+    <jsp:directive.page contentType="text/html; charset=UTF-8" />
+    <jsp:directive.page isELIgnored="false" />
+    <jsp:output omit-xml-declaration="false"
+                doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.1//EN"
+                doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml11.dtd" />
+
+    <jsp:element name="text">
+        <jsp:attribute name="lang">EN</jsp:attribute>
+         <head>
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/estilo.css"/>   
+        </head>        
+          
+    
+        <c:set scope="session" var="Path" value="${pageContext.request.contextPath}" />
+        <jsp:body> 
+            <h1>Listado de Equipos</h1>
+                      
+              <table border="4">
+                    <tr>
+                        <td><label>Marca</label></td>
+                        <td><label>idEquipo</label></td>  
+                        <td><label>Numero de serie</label></td>   
+                    </tr>
+                    <c:forEach items="${grupos}" var="grupo">
+
+                        <tr>
+                            <td><c:out value="${grupo.marca}"/></td>
+                            <td><c:out value="${grupo.idEquipo}"/></td>  
+                            <td><c:out value="${grupo.numSerie}"/></td>     
+                        </tr>
+
+                    </c:forEach>
+                    </table> 
+                           <a href="${Path}/index.jspx">Volver</a>
+            
+        </jsp:body>
+    </jsp:element>
+</jsp:root>
